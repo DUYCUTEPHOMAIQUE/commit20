@@ -1,0 +1,28 @@
+[
+ {
+  "file": "public/assets/guitar-practice.webm",
+  "media": "video",
+  "poster": "public/assets/guitar-practice-poster.jpg",
+  "ref": "commons:82996694",
+  "title": "Ginda Bestari - bending on electric guitar",
+  "creator": "Ginda Bestari Music Channel",
+  "creatorUrl": null,
+  "date": "2015-11-14",
+  "license": "CC BY-SA 3.0",
+  "licenseCode": "by-sa",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "creditRequired": true,
+  "page": "https://commons.wikimedia.org/wiki/File:Ginda_Bestari_-_bending_on_electric_guitar.ogv",
+  "via": "Wikimedia Commons",
+  "video": "https://upload.wikimedia.org/wikipedia/commons/transcoded/b/bc/Ginda_Bestari_-_bending_on_electric_guitar.ogv/Ginda_Bestari_-_bending_on_electric_guitar.ogv.480p.vp9.webm",
+  "width": 854,
+  "height": 480,
+  "duration": 16,
+  "bytes": 1738595,
+  "credit": "\"Ginda Bestari - bending on electric guitar\" by Ginda Bestari Music Channel, CC BY-SA 3.0, via Wikimedia Commons",
+  "notes": [
+   "Share-alike: an altered version (recoloured, combined with other pictures) must be shared under the same licence."
+  ],
+  "saved": "2026-10-17T21:13:08.459Z"
+ }
+]
