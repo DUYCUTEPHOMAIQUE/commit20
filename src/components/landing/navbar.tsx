@@ -26,14 +26,21 @@ export function Navbar() {
         </Link>
 
         {/* Navigation */}
-        <nav aria-label="Điều hướng chính" className="hidden md:flex items-center gap-8 text-sm font-bold text-zinc-600 dark:text-zinc-400">
-          <a href="#how-it-works" className="hover:text-black dark:hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-[#fe7141]">
+        <nav aria-label="Điều hướng chính" className="hidden md:flex items-center gap-6 text-sm font-bold text-zinc-600 dark:text-zinc-400">
+          <Link href="/c/guitar-3-songs" className="hover:text-[#fe7141] dark:hover:text-[#fe7141] transition-colors focus-visible:ring-2 focus-visible:ring-[#fe7141] flex items-center gap-1.5 text-zinc-950 dark:text-white">
+            <span className="w-2 h-2 rounded-full bg-[#fe7141] animate-ping" />
+            <span>Luyện Đàn Ảo</span>
+          </Link>
+          <Link href="/studio" className="hover:text-black dark:hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-[#fe7141]">
+            Creator Studio
+          </Link>
+          <a href="/#how-it-works" className="hover:text-black dark:hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-[#fe7141]">
             Cách Hoạt Động
           </a>
-          <a href="#levels" className="hover:text-black dark:hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-[#fe7141]">
+          <a href="/#levels" className="hover:text-black dark:hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-[#fe7141]">
             3 Cấp Độ Đầu Ra
           </a>
-          <a href="#showcase" className="hover:text-black dark:hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-[#fe7141]">
+          <a href="/#showcase" className="hover:text-black dark:hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-[#fe7141]">
             Sản Phẩm Thực Tế
           </a>
         </nav>

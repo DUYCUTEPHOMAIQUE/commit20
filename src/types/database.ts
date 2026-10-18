@@ -1,102 +1,100 @@
 export type UserRole = 'learner' | 'creator' | 'admin'
 
-export type SprintCategory =
+export type CourseCategory =
   | 'music'
   | 'language'
-  | 'cooking'
-  | 'fitness_health'
-  | 'productivity_tech'
-  | 'art_craft'
+  | 'lifestyle'
+  | 'tech'
+  | 'art'
+  | 'soft-skills'
   | 'other'
 
-export interface Profile {
-  id: string
-  username: string
-  full_name: string
-  avatar_url?: string | null
-  bio?: string | null
-  total_practice_minutes: number
-  current_streak_days: number
-  last_practice_date?: string | null
-  role: UserRole
-  created_at: string
-  updated_at: string
+export type DurationTier = '1h' | '5h' | '20h'
+
+export type SimulatorType = 'guitar' | 'voice-pitch' | 'prompt-ai' | 'sandbox'
+
+export type SubmissionType = 'audio' | 'video' | 'text' | 'file'
+
+export interface GuitarChordConfig {
+  chord: string
+  frets: number[] // 6 strings, -1 for mute, 0 for open, 1-12 for frets
+  fingers?: number[] // finger number 1-4 for each string, 0 for open/mute
 }
 
-export interface Sprint {
+export interface GuitarSimulatorConfig {
+  allowed_chords: string[]
+  default_bpm?: number
+  default_fret_zoom?: number
+  songs?: Array<{
+    title: string
+    chords: string[]
+    tempo: number
+  }>
+}
+
+export interface VoicePitchSimulatorConfig {
+  song_title: string
+  artist?: string
+  key: string
+  bpm: number
+  pinyin_lyrics?: string
+}
+
+export type SimulatorConfig = GuitarSimulatorConfig | VoicePitchSimulatorConfig | Record<string, unknown>
+
+export interface Course {
   id: string
-  creator_id: string
-  title: string
   slug: string
-  category: SprintCategory
-  target_hours: number // 1 to 20
-  promise_deliverable: string
-  prerequisites?: string | null
-  cover_image_url?: string | null
-  demo_video_url?: string | null
+  title: string
+  description?: string | null
+  category: CourseCategory
+  target_deliverable: string
+  duration_tier: DurationTier
+  simulator_type: SimulatorType
+  simulator_config: SimulatorConfig
+  creator_id?: string | null
   is_published: boolean
-  enrollment_count: number
-  completion_count: number
+  view_count: number
+  enroll_count: number
+  thumbnail_url?: string | null
   created_at: string
   updated_at: string
-  // Optional joined creator profile
-  creator?: Profile
+  modules?: CourseModule[]
 }
 
-export interface HourlyMilestone {
+export interface CourseModule {
   id: string
-  sprint_id: string
-  hour_index: number // 1 to target_hours
+  course_id: string
+  module_index: number // 1 to 20
   title: string
-  guide_markdown: string
-  embed_video_url?: string | null
-  checklist: string[]
-  checkpoint_prompt?: string | null
+  deliverable_milestone: string
+  guide_video_url?: string | null
+  instructions_markdown?: string | null
+  tab_data?: Record<string, unknown>
+  submission_type: SubmissionType
   created_at: string
 }
 
-export type EnrollmentStatus = 'in_progress' | 'completed' | 'abandoned'
-export type PaceType = 'daily_1h' | 'weekend_sprint' | 'self_paced'
+export interface Submission {
+  id: string
+  user_id?: string | null
+  course_id: string
+  module_id?: string | null
+  media_url: string
+  reflection_notes?: string | null
+  likes_count: number
+  created_at: string
+}
 
 export interface Enrollment {
   id: string
   user_id: string
-  sprint_id: string
-  status: EnrollmentStatus
-  pace_type: PaceType
-  current_hour: number
-  total_minutes_practiced: number
-  staked_amount: number
-  started_at: string
-  completed_at?: string | null
-  sprint?: Sprint
-}
-
-export interface PracticeLog {
-  id: string
-  enrollment_id: string
-  user_id: string
-  hour_index: number
-  duration_minutes: number
-  notes?: string | null
+  course_id: string
+  current_module_index: number
+  completed_modules: number[]
+  total_practice_seconds: number
+  streak_days: number
+  last_practiced_at?: string | null
   created_at: string
-}
-
-export type MediaType = 'video_embed' | 'audio_embed' | 'image_upload' | 'external_link'
-
-export interface ProofSubmission {
-  id: string
-  enrollment_id: string
-  user_id: string
-  sprint_id: string
-  is_final_deliverable: boolean
-  hour_index?: number | null
-  media_type: MediaType
-  media_url: string
-  reflection?: string | null
-  upvotes_count: number
-  is_featured: boolean
-  created_at: string
-  user?: Profile
-  sprint?: Sprint
+  course?: Course
 }

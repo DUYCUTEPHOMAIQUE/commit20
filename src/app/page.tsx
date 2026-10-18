@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { Navbar } from '@/components/landing/navbar'
 import { LearnerJourney } from '@/components/landing/learner-journey'
 import { LevelsExplorer } from '@/components/landing/levels-explorer'
@@ -26,15 +27,21 @@ export default function LandingPage() {
               Không cần 10.000 giờ để bắt đầu. Commit 20 đưa bạn chạm tới Ngưỡng Năng Lực Tối Thiểu (MVS) — đủ kiến thức nền tảng để tự sửa lỗi và tự tin tạo ra sản phẩm thực tế đầu tiên.
             </p>
 
-            {/* UNIFIED SINGLE PRIMARY CTA BUTTON */}
-            <div className="mt-10 animate-hero-3">
+            {/* ACTION-FIRST PRIMARY CTA BUTTONS */}
+            <div className="mt-10 animate-hero-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+              <Link
+                href="/c/guitar-3-songs"
+                className="cursor-pointer inline-flex items-center justify-center px-8 py-5 bg-[#fe7141] text-black hover:bg-[#ff8559] text-xl font-black tracking-tight transition-all active:scale-95 text-center"
+              >
+                Vào Luyện Đàn Ảo Ngay →
+              </Link>
               <AuthCtaButton
-                text="Bắt Đầu 20 Giờ Ngay →"
-                className="w-full sm:w-auto px-10 py-5 bg-[#fe7141] text-black hover:bg-[#ff8559] text-xl font-black tracking-tight"
+                text="Đăng Nhập Lưu Tiến Trình →"
+                className="w-full sm:w-auto px-6 py-5 bg-zinc-900 text-white hover:bg-zinc-800 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-base font-bold tracking-tight"
               />
-              <div className="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
-                1 chạm tiếp tục với Google hoặc Email · Miễn phí bài học đầu tiên
-              </div>
+            </div>
+            <div className="mt-3 text-sm text-zinc-500 dark:text-zinc-400">
+              Chơi ngay không cần tạo tài khoản · Trải nghiệm Web Audio gảy đàn thực tế
             </div>
 
             <div className="mt-14 flex flex-wrap gap-8 text-base font-bold text-zinc-600 dark:text-zinc-400 animate-hero-4">
